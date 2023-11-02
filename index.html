@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>SD4Match</title>
+		<!-- <link rel="icon" type="image/x-icon" href="/imgs/nope1.png"> -->
+		<!-- Bootstrap core CSS -->
+		
+		<!-- Custom styles for this template -->
+		<link href="css/academicons.css" rel="stylesheet">
+		<link rel="stylesheet" href="/dics.original.css">
+		<script src="/dics.original.js"></script>
+		<link href="css/footer.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="../src/original/dics.original.css">
+		<link rel='stylesheet'
+         href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    	<script src="../src/original/dics.original.js"></script>
+		<link
+		  rel="stylesheet" 
+		  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
+		  integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" 
+		  crossorigin="anonymous">
+		<!-- Custom fonts for this template -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	</head>
+<body>
+
+<main role="main" class="container", style="max-width: 900px;">
+	<h1 class="title is-3 publication-title">SD4Match: Learning to Prompt Stable Diffusion Model for Semantic Matching</h1>
+	<!-- &#x1F6AB &#129306 &#128581 &#128581;&#8205;&#9792;&#65039 &#x1F6AB-->
+	<div style="text-align: center;">
+		<p class="h4">CVPR 2024</p>
+	</div> 
+	<div class="col text-center">
+	    <p class="authors">
+		  <a href="https://scholar.google.com/citations?user=XLlgbBoAAAAJ&hl=en">Xinghui Li<sup>&dagger;</sup></a>,
+	      Jingyi Lu<sup>&Dagger;</sup>, 
+	      <a href="https://www.kaihan.org/">Kai Han<sup>&Dagger;</sup></a>,
+	      <a href="http://www.robots.ox.ac.uk/~victor/">Victor Adrian Prisacariu<sup>&dagger;</sup></a><br>
+	      <a href="http://active.vision"> <sup>&dagger;</sup>Active Vision Lab, University of Oxford</a>&emsp;
+		  <a href="https://visailab.github.io/index.html"> <sup>&Dagger;</sup>Visual AI Lab, University of Hong Kong</a>
+	    </p>
+	</div>
+	<div class="col text-center", style="padding: 20px 0px;">
+	    <a class="btn btn-dark", href="http://arxiv.org/abs/2310.17569" role="button">Arxiv</a>
+		<a class="btn btn-dark" href="#bibtex" role="button">Bibtex</a>
+		<a class="btn btn-dark", href="https://github.com/ActiveVisionLab/SD4Match" role="button">Code</a>
+		<!-- <a class="btn btn-dark" role="button">Code (Coming Soon)</a> -->
+		<!-- <button type="button" class="btn btn-dark" disabled>Code</button> -->
+	</div>
+
+	<div>
+	<div class="row">
+	<div class="column">
+		<img src="gif/dense_matching/aeroplane_1.gif" alt="Description of GIF">
+		<img src="gif/dense_matching/bird_1.gif" alt="Description of GIF">
+	</div>
+	<div class="column">
+		<img src="gif/dense_matching/bike_2.gif" alt="Description of GIF">
+		<img src="gif/dense_matching/bottle_1.gif" alt="Description of GIF">
+	</div>
+	<div class="column">
+		<img src="gif/dense_matching/boat_2.gif" alt="Description of GIF">
+		<img src="gif/dense_matching/cow_1.gif" alt="Description of GIF">
+	</div>
+	</div>	
+	</div>	
+	
+	<div>
+	<p class="title is-4">Abstract</p>
+	<p>
+	    In this work, we address the challenge of matching semantically similar keypoints across image pairs.
+		Existing research indicates that the intermediate output of the UNet within the Stable Diffusion (SD)
+		framework can serve as robust image feature maps for such a matching task. We demonstrate that by employing
+		a basic prompt tuning technique, the inherent potential of Stable Diffusion can be harnessed, resulting in
+		a significant enhancement in accuracy over previous approaches. We further introduce a novel conditional 
+		prompting module that conditions the prompt on the local details of the input image pairs, leading to a further improvement
+		in performance. We designate our approach as SD4Match, short for Stable Diffusion for Semantic Matching. 
+		<b>Comprehensive evaluations of SD4Match on the PF-Pascal, PF-Willow, and SPair-71k datasets show that it sets new benchmarks
+		in accuracy across all these datasets. Particularly, SD4Match outperforms the previous state-of-the-art
+		by a margin of 12 percentage points on the challenging SPair-71k dataset.</b>
+	</p>
+	</div>
+
+	<div>
+	<p class="title is-4">General Pipeline</p>
+	<p>
+		We directly optimize the prompt embedding of the Stable Diffusion model with keypoint supervision.
+		We offer three prompt learning options: a single and universial prompt (<b>Single</b>); 
+		one prompt for each object category (<b>Class</b>)
+		and a conditional prompting module (<b>CPM</b>). 
+	</p>
+	<div style="height:420px;overflow:scroll;">	
+		<img src="images/general.jpg" alt="General Pipeline"><br>
+		<p class="text-center"><b>(Scroll down for CPM architecture)</b></p><br>
+		<p class="title is-5">Conditional Prompting Module (CPM)</p>
+		<img src="images/cpm.jpg" alt="Conditional Prompting Module (CPM)">
+	</div>
+	</div>
+
+	<div>
+	<p class="title is-4">SPair-71K Benchmark Result</p>
+	<img src="images/comparison.jpg" alt="quantative result">
+	</div>
+
+	<div>
+	<p class="title is-4">Sparse Matching</p>
+	<div class="row">
+	<div class="column">
+		<div style="padding-left: 100px;">
+		<b>SD4Match</b>
+		</div>
+	</div>
+	<div class="column">
+		<div style="padding-left: 100px;">
+		<a href="https://sd-complements-dino.github.io/"><b>SD+DINO</b></a>
+		</div>
+	</div>
+	<div class="column">
+		<div style="padding-left: 115px;">
+		<a href="https://diffusionfeatures.github.io/"><b>DIFT</b></a>
+		</div>
+	</div>
+	</div>
+	<div class="image-row">
+		<img src="images/boat_4/our_result.png" alt="ours_boat4">
+		<img src="images/boat_4/sddino_result.png" alt="sddino_boat4">
+		<img src="images/boat_4/dift_result.png" alt="dift_boat4">
+	</div>
+	<div class="image-row">
+		<img src="images/train_4/our_result.png" alt="ours_train4">
+		<img src="images/train_4/sddino_result.png" alt="sddino_train4">
+		<img src="images/train_4/dift_result.png" alt="dift_train4">
+	</div>
+	<div class="image-row">
+		<img src="images/pottedplant_2/our_result.png" alt="ours_pottedplant2">
+		<img src="images/pottedplant_2/sddino_result.png" alt="sddino_pottedplant2">
+		<img src="images/pottedplant_2/dift_result.png" alt="dift_pottedplant2">
+	</div>
+	<div class="image-row">
+		<img src="images/chair_1/our_result.png" alt="ours_chair1">
+		<img src="images/chair_1/sddino_result.png" alt="sddino_chair1">
+		<img src="images/chair_1/dift_result.png" alt="dift_chair1">
+	</div>
+	</div>
+
+	<div>
+	<h2 class="title is-4">Dense Matching</h2>
+	<div class="row">
+	<div class="column">
+		<img src="gif/dense_matching/aeroplane_2.gif" alt="aeroplane_2">
+		<img src="gif/dense_matching/bottle_2.gif" alt="bottle_2">
+		<img src="gif/dense_matching/cow_2.gif" alt="cow_2">
+		<img src="gif/dense_matching/chair_2.gif" alt="chair_2">
+	</div>
+	<div class="column">
+		<img src="gif/dense_matching/bike_1.gif" alt="bike_1">
+		<img src="gif/dense_matching/boat_1.gif" alt="boat_1">
+		<img src="gif/dense_matching/dog_2.gif" alt="dog_2">
+		<img src="gif/dense_matching/motorbike_1.gif" alt="motorbike_1">
+	</div>
+	<div class="column">
+		<img src="gif/dense_matching/bird_2.gif" alt="bird_2">
+		<img src="gif/dense_matching/car_2.gif" alt="car_2">
+		<img src="gif/dense_matching/horse_2.gif" alt="horse_1">
+		<img src="gif/dense_matching/person_1.gif" alt="person_1">
+	</div>
+	</div>
+	</div>
+	  
+<h2 class="title is-4">BibTeX</h2>
+<code class="codebox" id="bibtex"><pre>
+@misc{li2023sd4match,
+	title={SD4Match: Learning to Prompt Stable Diffusion Model for Semantic Matching}, 
+	author={Xinghui Li and Jingyi Lu and Kai Han and Victor Prisacariu},
+	year={2023},
+	eprint={2310.17569},
+	archivePrefix={arXiv},
+	primaryClass={cs.CV}
+    }
+   
+</main>
+</body>
+	
+</html>
