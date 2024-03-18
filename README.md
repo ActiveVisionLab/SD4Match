@@ -1,6 +1,6 @@
 # SD4Match: Learning to Prompt Stable Diffusion Model for Semantic Matching
 
-**[Project Page](http://sd4match.active.vision/) | [Arxiv](https://arxiv.org/abs/2310.17569) | [Pretrained Prompt](https://www.robots.ox.ac.uk/~xinghui/sd4match/pretrained_prompts.zip)**
+**[Project Page](http://sd4match.active.vision/) | [Arxiv](https://arxiv.org/abs/2310.17569)**
 
 [Xinghui Li<sup>1</sup>](https://scholar.google.com/citations?user=XLlgbBoAAAAJ&hl=en),
 Jingyi Lu<sup>2</sup>, 
@@ -117,6 +117,9 @@ python test.py \
 --timestep 50 \
 --layer 1
 ```
+
+## Pretrained Prompt
+Our pretrained prompt can be downloaded through [link](https://www.robots.ox.ac.uk/~xinghui/sd4match/pretrained_prompts.zip).
 
 ## Acknowledgement
 [Kai Han](https://www.kaihan.org/) is supported by Hong Kong Research
