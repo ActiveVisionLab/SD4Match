@@ -25,7 +25,7 @@ $pip install yacs pandas scipy einops matplotlib triton timm diffusers accelerat
 #### PF-Pascal
 1. Download PF-Pascal dataset from [link](https://www.di.ens.fr/willow/research/proposalflow/).
 2. Rename the outermost directory from `PF-dataset-PASCAL` to `pf-pascal`.
-3. Download lists for image pairs from [link](www.robots.ox.ac.uk/~xinghui/sd4match/pf-pascal_image_pairs.zip).
+3. Download lists for image pairs from [link](https://www.robots.ox.ac.uk/~xinghui/sd4match/pf-pascal_image_pairs.zip).
 4. Place the lists for image pairs under `pf-pascal` directory. The structure should be:
 ```
 pf-pascal
@@ -38,7 +38,7 @@ pf-pascal
 #### PF-Willow
 1. Download PF-Willow dataset from the [link](https://www.di.ens.fr/willow/research/proposalflow/).
 2. Rename the outermost directory from `PF-dataset` to `pf-willow`.
-3. Download lists for image pairs from [link](www.robots.ox.ac.uk/~xinghui/sd4match/test_pairs.csv).
+3. Download lists for image pairs from [link](https://www.robots.ox.ac.uk/~xinghui/sd4match/test_pairs.csv).
 4. Place the lists for image pairs under `pf-willow` directory. The structure should be:
 ```
 pf-willow
