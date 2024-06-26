@@ -242,11 +242,8 @@ for epoch in range(args.epochs):
                 
                 move_batch_to(batch, accelerator.device)
 
-                src_imnames = [f"{batch['category'][i]}-{batch['src_imname'][i][:-4]}" for i in range(len(batch['src_imname']))]
-                trg_imnames = [f"{batch['category'][i]}-{batch['trg_imname'][i][:-4]}" for i in range(len(batch['trg_imname']))]
-
-                featmaps0 = torch.cat([featmap_dict[imname] for imname in src_imnames], dim=0)
-                featmaps1 = torch.cat([featmap_dict[imname] for imname in trg_imnames], dim=0)
+                featmaps0 = torch.cat([featmap_dict[imname] for imname in batch["src_identifier"]], dim=0)
+                featmaps1 = torch.cat([featmap_dict[imname] for imname in batch["trg_identifier"]], dim=0)
                 
                 batch['src_featmaps'] = featmaps0
                 batch['trg_featmaps'] = featmaps1
